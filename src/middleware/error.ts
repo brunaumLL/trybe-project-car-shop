@@ -12,8 +12,8 @@ const errorHandler: ErrorRequestHandler = (err: Error | ZodError, _req, res, _ne
   const thrownError = errorCatalog[errorMessage];
 
   if (thrownError) {
-    const { message, httpStatus } = thrownError;
-    return res.status(httpStatus).json({ message });
+    const { error, httpStatus } = thrownError;
+    return res.status(httpStatus).json({ error });
   }
 
   return res.status(500).json({ message: 'Internal error' });
